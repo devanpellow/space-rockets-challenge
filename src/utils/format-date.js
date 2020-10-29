@@ -9,8 +9,8 @@ export function formatDate(timestamp) {
   }).format(new Date(timestamp));
 }
 
-export function formatDateTime(timestamp) {
-  return new Intl.DateTimeFormat("en-US", {
+export function formatUserLocalDateTime(timestamp) {
+  return new Intl.DateTimeFormat(navigator.language, {
     year: "numeric",
     month: "long",
     day: "numeric",

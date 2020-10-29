@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/core";
 
 import { useSpaceX } from "../utils/use-space-x";
-import { formatDateTime } from "../utils/format-date";
+import { formatDateTime, formatUserLocalDateTime } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 
@@ -125,7 +125,7 @@ function TimeAndLocation({ launch }) {
           </Box>
         </StatLabel>
         <StatNumber fontSize={["md", "xl"]}>
-          <Tooltip hasArrow label={'Your local time: ' + formatDateTime(launch.launch_date_local)}>
+          <Tooltip hasArrow label={'Your local time: ' + formatUserLocalDateTime(launch.launch_date_utc)}>
             {formatDateTime(launch.launch_date_local)}
           </Tooltip>
         </StatNumber>
