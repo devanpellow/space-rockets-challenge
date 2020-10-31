@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/global-state"
 import { Star } from "react-feather";
 import { IconButton } from "@chakra-ui/core";
 
-export default function Favourite({id, item}) {
+export default function FavouriteButton({id, item}) {
    
     const {
         addItemToFavourites, favourites
