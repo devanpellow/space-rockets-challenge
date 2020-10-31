@@ -6,6 +6,7 @@ import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
 import { useSpaceXPaginated } from "../utils/use-space-x";
+import Favourite from "./user-favourite"
 
 const PAGE_SIZE = 12;
 
@@ -88,6 +89,7 @@ function LaunchPadItem({ launchPad }) {
         <Text color="gray.500" fontSize="sm">
           {launchPad.vehicles_launched.join(", ")}
         </Text>
+        <Favourite id={launchPad.site_id} item={launchPad} />
       </Box>
     </Box>
   );

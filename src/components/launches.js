@@ -115,7 +115,7 @@ export function LaunchItem({ launch }) {
           <Text color="gray.500" ml="2" fontSize="sm">
             {timeAgo(launch.launch_date_utc)}
           </Text>
-          <Favourite item={launch} />
+          <Favourite id={launch.flight_number} item={launch} />
         </Flex>
       </Box>
     </Box>

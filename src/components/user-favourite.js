@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Star } from "react-feather";
 import { IconButton } from "@chakra-ui/core";
 
-export default function Favourite({item}) {
+export default function Favourite({id, item}) {
     function toggelFavourtie(event) {
         event.preventDefault();
-        if (localStorage.getItem(item.flight_number) === null) {
-            localStorage.setItem(item.flight_number, JSON.stringify(item))
+        if (localStorage.getItem(id) === null) {
+            localStorage.setItem(id, JSON.stringify(item))
         } else {
-            localStorage.removeItem(item.flight_number)
+            localStorage.removeItem(id)
         }
-    } 
+    }
     return (
         <div>
             <IconButton 
@@ -21,7 +21,3 @@ export default function Favourite({item}) {
         </div>
     );
 }
-
-
-
-  
