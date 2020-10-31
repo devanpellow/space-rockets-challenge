@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/global-state"
 import { Star } from "react-feather";
 import { IconButton } from "@chakra-ui/core";
 
 export default function Favourite({id, item}) {
-    function toggelFavourtie(event) {
-        event.preventDefault();
-        if (localStorage.getItem(id) === null) {
-            localStorage.setItem(id, JSON.stringify(item))
-        } else {
-            localStorage.removeItem(id)
-        }
-    }
+   
+    const {
+        addItemToFavourites, favourites
+    } = useContext(GlobalContext);
+
+    let storedItem = favourites.find(i => i.flight_number === id);
+
+    const favouriteFilled = storedItem ? true : false;
+
+    const iconFilled = {fill: 'yellow'}
+    const iconOutline = {fill: 'none'}
+
     return (
         <div>
             <IconButton 
-            onClick={toggelFavourtie}
-            variant="ghost"
-            variantColor="yellow"
-            as={Star} width="3em" />
+                onClick={()=>addItemToFavourites(item)}
+                variant="ghost"
+                variantColor="yellow"
+                as={Star} 
+                size="1em"
+                style={ favouriteFilled ? iconFilled : iconOutline}
+            />
         </div>
     );
 }
