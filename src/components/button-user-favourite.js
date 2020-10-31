@@ -9,7 +9,7 @@ export default function Favourite({id, item}) {
         addItemToFavourites, favourites
     } = useContext(GlobalContext);
 
-    let storedItem = favourites.find(i => i.flight_number === id);
+    let storedItem = favourites.find(i => (i.flight_number || i.site_id) === id);
 
     const favouriteFilled = storedItem ? true : false;
 
