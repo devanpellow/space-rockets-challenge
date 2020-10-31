@@ -8,6 +8,7 @@ import { formatDate } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
+import Favourite from "./user-favourite"
 
 const PAGE_SIZE = 12;
 
@@ -115,6 +116,7 @@ export function LaunchItem({ launch }) {
           <Text color="gray.500" ml="2" fontSize="sm">
             {timeAgo(launch.launch_date_utc)}
           </Text>
+          <Favourite item={launch} />
         </Flex>
       </Box>
     </Box>
