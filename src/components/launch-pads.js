@@ -6,7 +6,7 @@ import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
 import { useSpaceXPaginated } from "../utils/use-space-x";
-import FavouriteButton from "./button-user-favourite"
+import FavouriteButton from "./button-user-favourite";
 
 const PAGE_SIZE = 12;
 
@@ -42,7 +42,7 @@ export default function LaunchPads() {
   );
 }
 
-function LaunchPadItem({ launchPad }) {
+export function LaunchPadItem({ launchPad }) {
   return (
     <Box
       as={Link}
@@ -89,7 +89,11 @@ function LaunchPadItem({ launchPad }) {
         <Text color="gray.500" fontSize="sm">
           {launchPad.vehicles_launched.join(", ")}
         </Text>
-        <FavouriteButton id={launchPad.site_id} item={launchPad} />
+        <FavouriteButton
+          type={"launchPad"}
+          id={launchPad.site_id}
+          item={launchPad}
+        />
       </Box>
     </Box>
   );

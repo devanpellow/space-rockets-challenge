@@ -8,7 +8,7 @@ import Home from "./home";
 import LaunchPads from "./launch-pads";
 import LaunchPad from "./launch-pad";
 import FavouriteList from "./sidebar-user-favourite-list";
-import {GlobalProvider}  from "../context/global-state";
+import { GlobalProvider } from "../context/global-state";
 
 export default function App() {
   return (
@@ -46,7 +46,7 @@ function NavBar() {
       >
         ¡SPACE·R0CKETS!
       </Text>
-      <FavouriteList/>
+      <FavouriteList />
     </Flex>
   );
 }

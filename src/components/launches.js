@@ -8,7 +8,7 @@ import { formatDate } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
-import FavouriteButton from "./button-user-favourite"
+import FavouriteButton from "./button-user-favourite";
 
 const PAGE_SIZE = 12;
 
@@ -115,7 +115,11 @@ export function LaunchItem({ launch }) {
           <Text color="gray.500" ml="2" fontSize="sm">
             {timeAgo(launch.launch_date_utc)}
           </Text>
-          <FavouriteButton id={launch.flight_number} item={launch} />
+          <FavouriteButton
+            type={"launches"}
+            id={launch.flight_number}
+            item={launch}
+          />
         </Flex>
       </Box>
     </Box>
