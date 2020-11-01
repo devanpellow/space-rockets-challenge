@@ -110,11 +110,13 @@ export function LaunchItem({ launch }) {
         >
           {launch.mission_name}
         </Box>
-        <Flex>
-          <Text fontSize="sm">{formatDate(launch.launch_date_utc)} </Text>
-          <Text color="gray.500" ml="2" fontSize="sm">
-            {timeAgo(launch.launch_date_utc)}
-          </Text>
+        <Flex justify="space-between">
+          <Flex>
+            <Text fontSize="sm">{formatDate(launch.launch_date_utc)} </Text>
+            <Text color="gray.500" ml="2" fontSize="sm">
+              {timeAgo(launch.launch_date_utc)}
+            </Text>
+          </Flex>
           <FavouriteButton
             type={"launches"}
             id={launch.flight_number}
