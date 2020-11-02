@@ -76,7 +76,7 @@ function ColorModeToggle() {
         <IconButton
           onClick={toggleColorMode}
           as={colorMode === "light" ? Moon : Sun}
-          variant="ghost"
+          variant="link"
           verticalAlign="center"
           size="1rem"
         >

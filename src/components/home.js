@@ -22,7 +22,7 @@ function PageLink({ url, children, ...rest }) {
         boxShadow="md"
         borderWidth="1px"
         rounded="lg"
-        bg={colorMode === "light" ? "gray.100" : "gray.500"}
+        bg={colorMode === "light" ? "" : "gray.500"}
       >
         <Text fontSize="lg">{children}</Text>
         <Box as={ArrowRight} />

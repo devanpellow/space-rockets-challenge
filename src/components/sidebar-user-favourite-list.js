@@ -15,6 +15,7 @@ import {
   IconButton,
   SimpleGrid,
   Text,
+  Tooltip,
   useDisclosure,
 } from "@chakra-ui/core";
 
@@ -24,7 +25,9 @@ export default function FavouriteList() {
 
   return (
     <>
-      <IconButton ref={btnRef} as={Star} variant="link" onClick={onOpen} />
+    <Tooltip hasArrow placement="bottom" label="Your Favourites">
+      <IconButton ref={btnRef} as={Star} variant="link" size="1rem" onClick={onOpen} />
+    </Tooltip>
       <Drawer
         scrollBehavior={"inside"}
         blockScrollOnMount={false}
