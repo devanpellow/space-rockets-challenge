@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/global-state";
 import { LaunchPadItem } from "./launch-pads";
-import { LaunchItem } from "./launches"
+import { LaunchItem } from "./launches";
 
 import {
+  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -12,6 +13,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Text,
   useDisclosure,
 } from "@chakra-ui/core";
 
@@ -30,7 +32,7 @@ export default function FavouriteList() {
         isOpen={isOpen}
         placement="right"
         onClose={onClose}
-        finalFocusRef={btnRef}
+        size="md"
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -56,31 +58,33 @@ export default function FavouriteList() {
 function FavouriteLaunchPadListItems() {
   const { favouriteLaunchPads } = useContext(GlobalContext);
   return (
-    <div>
-      <h2>Your Launch Pads ({favouriteLaunchPads.length})</h2>
+    <>
+      <Text fontWeight="600">
+        Your Launch Pads ({favouriteLaunchPads.length})
+      </Text>
       {favouriteLaunchPads.length > 0 ? (
         favouriteLaunchPads.map((launchPad) => (
           <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
         ))
       ) : (
-        <h2>No favourite launch pads yet! Add some</h2>
+        <Text fontSize="1em">No favourite launch pads yet! Add some</Text>
       )}
-    </div>
+    </>
   );
 }
 
 function FavouriteLaunchesListItems() {
   const { favouriteLaunches } = useContext(GlobalContext);
   return (
-    <div>
-      <h2>Your Launches ({favouriteLaunches.length})</h2>
+    <>
+      <Text fontWeight="600">Your Launches ({favouriteLaunches.length})</Text>
       {favouriteLaunches.length > 0 ? (
         favouriteLaunches.map((launch) => (
           <LaunchItem key={launch.flight_number} launch={launch} />
         ))
       ) : (
-        <h2>No favourite launches yet! Add some</h2>
+        <Text fontSize="1em">No favourite launches yet! Add some</Text>
       )}
-    </div>
+    </>
   );
 }

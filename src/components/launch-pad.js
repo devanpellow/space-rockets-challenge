@@ -21,6 +21,7 @@ import { useSpaceX } from "../utils/use-space-x";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import { LaunchItem } from "./launches";
+import FavouriteButton from "./button-user-favourite";
 
 export default function LaunchPad() {
   let { launchPadId } = useParams();
@@ -89,7 +90,14 @@ function Header({ launchPad }) {
         fontSize={["md", "3xl"]}
         borderRadius="lg"
       >
-        {launchPad.site_name_long}
+        <Flex>
+          <Text mr="2">{launchPad.site_name_long}</Text>
+          <FavouriteButton
+            type={"launchPad"}
+            id={launchPad.site_id}
+            item={launchPad}
+          />
+        </Flex>
       </Heading>
       <Stack isInline spacing="3">
         <Badge variantColor="purple" fontSize={["sm", "md"]}>

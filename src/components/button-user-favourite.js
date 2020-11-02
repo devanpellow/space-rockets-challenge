@@ -13,7 +13,8 @@ export default function FavouriteButton({ type, id, item }) {
     favouriteLaunches,
   } = useContext(GlobalContext);
 
-  function toggleFavourite(type, item) {
+  function toggleFavourite(event, type, item) {
+      event.preventDefault()
     if (type === "launches") {
       toggleFavouriteLaunches(item);
     } else {
@@ -43,15 +44,15 @@ export default function FavouriteButton({ type, id, item }) {
 
   const favouriteFilled = storedItem ? true : false;
 
-  const iconFilled = { fill: "yellow" };
+  const iconFilled = { fill: "#ECC94B" };
   const iconOutline = { fill: "none" };
 
   return (
     <div>
       <IconButton
-        onClick={() => toggleFavourite(type, item)}
+        onClick={(event) => toggleFavourite(event, type, item)}
         variant="ghost"
-        variantColor="yellow"
+        stroke="#ECC94B"
         as={Star}
         size="1em"
         style={favouriteFilled ? iconFilled : iconOutline}
