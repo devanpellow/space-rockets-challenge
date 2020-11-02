@@ -14,28 +14,22 @@ export default function FavouriteButton({ type, id, item }) {
   } = useContext(GlobalContext);
 
   function toggleFavourite(event, type, item) {
-      event.preventDefault()
-    if (type === "launches") {
-      toggleFavouriteLaunches(item);
-    } else {
-      toggleFavouriteLaunchPads(item);
-    }
+    event.preventDefault();
+    type === "launches"
+      ? toggleFavouriteLaunches(item)
+      : toggleFavouriteLaunchPads(item);
   }
 
   function toggleFavouriteLaunches(item) {
-    if (storedItem) {
-      return removeItemFromFavouriteLaunches(item);
-    } else {
-      addItemToFavouriteLaunches(item);
-    }
+    storedItem
+      ? removeItemFromFavouriteLaunches(item)
+      : addItemToFavouriteLaunches(item);
   }
 
   function toggleFavouriteLaunchPads(item) {
-    if (storedItem) {
-      return removeItemFromFavouriteLaunchPads(item);
-    } else {
-      addItemToFavouriteLaunchPads(item);
-    }
+    storedItem
+      ? removeItemFromFavouriteLaunchPads(item)
+      : addItemToFavouriteLaunchPads(item);
   }
 
   let storedItem =
@@ -43,8 +37,6 @@ export default function FavouriteButton({ type, id, item }) {
     favouriteLaunches.find((i) => i.flight_number === id);
 
   const favouriteFilled = storedItem ? true : false;
-  const iconFilled = { fill: "#ECC94B" };
-  const iconOutline = { fill: "none" };
 
   return (
     <div>
@@ -54,7 +46,7 @@ export default function FavouriteButton({ type, id, item }) {
         stroke="#ECC94B"
         as={Star}
         size="1em"
-        style={favouriteFilled ? iconFilled : iconOutline}
+        style={favouriteFilled ? { fill: "#ECC94B" } : { fill: "none" }}
       />
     </div>
   );
