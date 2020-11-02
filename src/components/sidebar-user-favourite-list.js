@@ -59,10 +59,10 @@ function FavouriteLaunchPadListItems() {
   const { favouriteLaunchPads } = useContext(GlobalContext);
   return (
     <>
-      <Text fontWeight="600">
+      <Text my={2} fontWeight="600">
         Your Launch Pads ({favouriteLaunchPads.length})
       </Text>
-      <SimpleGrid>
+      <SimpleGrid spacing={2}>
         {favouriteLaunchPads.length > 0 ? (
           favouriteLaunchPads.map((launchPad) => (
             <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
@@ -79,8 +79,10 @@ function FavouriteLaunchesListItems() {
   const { favouriteLaunches } = useContext(GlobalContext);
   return (
     <>
-      <Text fontWeight="600">Your Launches ({favouriteLaunches.length})</Text>
-      <SimpleGrid>
+      <Text my={2} fontWeight="600">
+        Your Launches ({favouriteLaunches.length})
+      </Text>
+      <SimpleGrid spacing={2}>
         {favouriteLaunches.length > 0 ? (
           favouriteLaunches.map((launch) => (
             <LaunchItem key={launch.flight_number} launch={launch} />

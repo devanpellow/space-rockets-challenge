@@ -43,7 +43,6 @@ export default function FavouriteButton({ type, id, item }) {
     favouriteLaunches.find((i) => i.flight_number === id);
 
   const favouriteFilled = storedItem ? true : false;
-
   const iconFilled = { fill: "#ECC94B" };
   const iconOutline = { fill: "none" };
 
