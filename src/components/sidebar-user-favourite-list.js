@@ -4,7 +4,6 @@ import { LaunchPadItem } from "./launch-pads";
 import { LaunchItem } from "./launches";
 
 import {
-  Box,
   Button,
   Drawer,
   DrawerBody,
@@ -13,6 +12,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  SimpleGrid,
   Text,
   useDisclosure,
 } from "@chakra-ui/core";
@@ -62,13 +62,15 @@ function FavouriteLaunchPadListItems() {
       <Text fontWeight="600">
         Your Launch Pads ({favouriteLaunchPads.length})
       </Text>
-      {favouriteLaunchPads.length > 0 ? (
-        favouriteLaunchPads.map((launchPad) => (
-          <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
-        ))
-      ) : (
-        <Text fontSize="1em">No favourite launch pads yet! Add some</Text>
-      )}
+      <SimpleGrid>
+        {favouriteLaunchPads.length > 0 ? (
+          favouriteLaunchPads.map((launchPad) => (
+            <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
+          ))
+        ) : (
+          <Text fontSize="1em">No favourite launch pads yet! Add some</Text>
+        )}
+      </SimpleGrid>
     </>
   );
 }
@@ -78,13 +80,15 @@ function FavouriteLaunchesListItems() {
   return (
     <>
       <Text fontWeight="600">Your Launches ({favouriteLaunches.length})</Text>
-      {favouriteLaunches.length > 0 ? (
-        favouriteLaunches.map((launch) => (
-          <LaunchItem key={launch.flight_number} launch={launch} />
-        ))
-      ) : (
-        <Text fontSize="1em">No favourite launches yet! Add some</Text>
-      )}
+      <SimpleGrid>
+        {favouriteLaunches.length > 0 ? (
+          favouriteLaunches.map((launch) => (
+            <LaunchItem key={launch.flight_number} launch={launch} />
+          ))
+        ) : (
+          <Text fontSize="1em">No favourite launches yet! Add some</Text>
+        )}
+      </SimpleGrid>
     </>
   );
 }
