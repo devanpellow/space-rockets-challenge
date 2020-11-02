@@ -70,9 +70,6 @@ export default function LaunchPad() {
   );
 }
 
-const randomColor = (start = 200, end = 250) =>
-  `hsl(${start + end * Math.random()}, 80%, 90%)`;
-
 function Header({ launchPad }) {
   const { colorMode } = useColorMode();
   return (
@@ -157,7 +154,6 @@ function LocationAndVehicles({ launchPad }) {
 }
 
 function Map({ location }) {
-  const { colorMode } = useColorMode();
   return (
     <AspectRatioBox ratio={16 / 5}>
       <Box
