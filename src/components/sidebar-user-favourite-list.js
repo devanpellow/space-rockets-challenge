@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/global-state";
 import { LaunchPadItem } from "./launch-pads";
 import { LaunchItem } from "./launches";
-
+import { Star } from "react-feather";
 import {
   Button,
   Drawer,
@@ -12,6 +12,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  IconButton,
   SimpleGrid,
   Text,
   useDisclosure,
@@ -23,9 +24,7 @@ export default function FavouriteList() {
 
   return (
     <>
-      <Button ref={btnRef} variantColor="teal" onClick={onOpen}>
-        Your Favourites
-      </Button>
+      <IconButton ref={btnRef} as={Star} variant="link" onClick={onOpen} />
       <Drawer
         scrollBehavior={"inside"}
         blockScrollOnMount={false}
