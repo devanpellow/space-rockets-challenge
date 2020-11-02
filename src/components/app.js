@@ -1,7 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Flex, Text } from "@chakra-ui/core";
-
+import {
+  Box,
+  IconButton,
+  Flex,
+  Text,
+  Tooltip,
+  useColorMode,
+} from "@chakra-ui/core";
+import { Sun, Moon } from "react-feather";
 import Launches from "./launches";
 import Launch from "./launch";
 import Home from "./home";
@@ -28,6 +35,7 @@ export default function App() {
 }
 
 function NavBar() {
+  const { colorMode } = useColorMode();
   return (
     <Flex
       as="nav"
@@ -35,7 +43,7 @@ function NavBar() {
       justify="space-between"
       wrap="wrap"
       padding="6"
-      bg="gray.800"
+      bg={colorMode === "light" ? "gray.800" : "gray.600"}
       color="white"
     >
       <Text
@@ -46,7 +54,35 @@ function NavBar() {
       >
         ¡SPACE·R0CKETS!
       </Text>
-      <FavouriteList />
+      <Flex align="center">
+        <Box mr={6}>
+          <FavouriteList />
+        </Box>
+        <ColorModeToggle />
+      </Flex>
     </Flex>
+  );
+}
+
+function ColorModeToggle() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <header>
+      <Tooltip
+        label={colorMode === "light" ? "Dark Mode" : "Light Mode"}
+        hasArrow
+        placement="bottom"
+      >
+        <IconButton
+          onClick={toggleColorMode}
+          as={colorMode === "light" ? Moon : Sun}
+          variant="ghost"
+          verticalAlign="center"
+          size="1rem"
+        >
+          {colorMode === "light" ? "Dark" : "Light"}
+        </IconButton>
+      </Tooltip>
+    </header>
   );
 }

@@ -20,6 +20,7 @@ import {
   Stack,
   AspectRatioBox,
   StatGroup,
+  useColorMode,
 } from "@chakra-ui/core";
 
 import { useSpaceX } from "../utils/use-space-x";
@@ -34,7 +35,8 @@ import FavouriteButton from "./button-user-favourite";
 export default function Launch() {
   let { launchId } = useParams();
   const { data: launch, error } = useSpaceX(`/launches/${launchId}`);
-
+  const { colorMode } = useColorMode();
+  
   if (error) return <Error />;
   if (!launch) {
     return (
@@ -57,7 +59,11 @@ export default function Launch() {
       <Box m={[3, 6]}>
         <TimeAndLocation launch={launch} />
         <RocketInfo launch={launch} />
-        <Text color="gray.700" fontSize={["md", null, "lg"]} my="8">
+        <Text
+          color={colorMode === "light" ? "gray.700" : "gray.300"}
+          fontSize={["md", null, "lg"]}
+          my="8"
+        >
           {launch.details}
         </Text>
         <Video launch={launch} />
@@ -128,8 +134,15 @@ function Header({ launch }) {
 }
 
 function TimeAndLocation({ launch }) {
+  const { colorMode } = useColorMode();
   return (
-    <SimpleGrid columns={[1, 1, 2]} borderWidth="1px" p="4" borderRadius="md">
+    <SimpleGrid
+      bg={colorMode === "light" ? "" : "gray.500"}
+      columns={[1, 1, 2]}
+      borderWidth="1px"
+      p="4"
+      borderRadius="md"
+    >
       <Stat>
         <StatLabel display="flex">
           <Box as={Watch} width="1em" />{" "}
@@ -173,7 +186,7 @@ function TimeAndLocation({ launch }) {
 
 function RocketInfo({ launch }) {
   const cores = launch.rocket.first_stage.cores;
-
+  const { colorMode } = useColorMode();
   return (
     <SimpleGrid
       columns={[1, 1, 2]}
@@ -181,6 +194,7 @@ function RocketInfo({ launch }) {
       mt="4"
       p="4"
       borderRadius="md"
+      bg={colorMode === "light" ? "" : "gray.500"}
     >
       <Stat>
         <StatLabel display="flex">
