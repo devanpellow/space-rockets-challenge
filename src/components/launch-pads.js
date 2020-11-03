@@ -1,5 +1,12 @@
 import React from "react";
-import { Badge, Box, Flex, SimpleGrid, Text } from "@chakra-ui/core";
+import {
+  Badge,
+  Box,
+  Flex,
+  SimpleGrid,
+  Text,
+  useColorMode,
+} from "@chakra-ui/core";
 import { Link } from "react-router-dom";
 
 import Error from "./error";
@@ -43,6 +50,7 @@ export default function LaunchPads() {
 }
 
 export function LaunchPadItem({ launchPad }) {
+  const { colorMode } = useColorMode();
   return (
     <Box
       as={Link}
@@ -53,7 +61,7 @@ export function LaunchPadItem({ launchPad }) {
       overflow="hidden"
       position="relative"
     >
-      <Box p="6">
+      <Box bg={colorMode === "light" ? "" : "gray.500"} p="6">
         <Box d="flex" alignItems="baseline">
           {launchPad.status === "active" ? (
             <Badge px="2" variant="solid" variantColor="green">
@@ -65,7 +73,7 @@ export function LaunchPadItem({ launchPad }) {
             </Badge>
           )}
           <Box
-            color="gray.500"
+            color={colorMode === "light" ? "gray.500" : "gray.300"}
             fontWeight="semibold"
             letterSpacing="wide"
             fontSize="xs"
@@ -87,7 +95,10 @@ export function LaunchPadItem({ launchPad }) {
           {launchPad.name}
         </Box>
         <Flex align="end" justify="space-between">
-          <Text color="gray.500" fontSize="sm">
+          <Text
+            color={colorMode === "light" ? "gray.500" : "gray.300"}
+            fontSize="sm"
+          >
             {launchPad.vehicles_launched.join(", ")}
           </Text>
           <FavouriteButton

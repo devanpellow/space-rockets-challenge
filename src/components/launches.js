@@ -1,5 +1,13 @@
 import React from "react";
-import { Badge, Box, Image, SimpleGrid, Text, Flex } from "@chakra-ui/core";
+import {
+  Badge,
+  Box,
+  Image,
+  SimpleGrid,
+  Text,
+  Flex,
+  useColorMode,
+} from "@chakra-ui/core";
 import { format as timeAgo } from "timeago.js";
 import { Link } from "react-router-dom";
 
@@ -46,6 +54,7 @@ export default function Launches() {
 }
 
 export function LaunchItem({ launch }) {
+  const { colorMode } = useColorMode();
   return (
     <Box
       as={Link}
@@ -55,6 +64,7 @@ export function LaunchItem({ launch }) {
       rounded="lg"
       overflow="hidden"
       position="relative"
+      bg={colorMode === "light" ? "" : "gray.500"}
     >
       <Image
         src={
@@ -90,7 +100,7 @@ export function LaunchItem({ launch }) {
             </Badge>
           )}
           <Box
-            color="gray.500"
+            color={colorMode === "light" ? "gray.700" : "gray.300"}
             fontWeight="semibold"
             letterSpacing="wide"
             fontSize="xs"
@@ -113,7 +123,11 @@ export function LaunchItem({ launch }) {
         <Flex justify="space-between">
           <Flex>
             <Text fontSize="sm">{formatDate(launch.launch_date_utc)} </Text>
-            <Text color="gray.500" ml="2" fontSize="sm">
+            <Text
+              color={colorMode === "light" ? "gray.700" : "gray.300"}
+              ml="2"
+              fontSize="sm"
+            >
               {timeAgo(launch.launch_date_utc)}
             </Text>
           </Flex>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text, Stack, Link } from "@chakra-ui/core";
+import { Flex, Box, Text, Stack, Link, useColorMode } from "@chakra-ui/core";
 import { ArrowRight } from "react-feather";
 import { Link as BrowserLink } from "react-router-dom";
 
@@ -13,6 +13,7 @@ export default function Home() {
 }
 
 function PageLink({ url, children, ...rest }) {
+  const { colorMode } = useColorMode();
   return (
     <Link as={BrowserLink} to={url} {...rest}>
       <Flex
@@ -21,6 +22,7 @@ function PageLink({ url, children, ...rest }) {
         boxShadow="md"
         borderWidth="1px"
         rounded="lg"
+        bg={colorMode === "light" ? "" : "gray.500"}
       >
         <Text fontSize="lg">{children}</Text>
         <Box as={ArrowRight} />
