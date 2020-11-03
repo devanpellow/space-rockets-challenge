@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/global-state";
 import { Star } from "react-feather";
 import { IconButton } from "@chakra-ui/core";
+import { motion } from "framer-motion";
 
 export default function FavouriteButton({ type, id, item }) {
   const {
@@ -40,14 +41,19 @@ export default function FavouriteButton({ type, id, item }) {
 
   return (
     <div>
-      <IconButton
-        onClick={(event) => toggleFavourite(event, type, item)}
-        variant="ghost"
-        stroke="#ECC94B"
-        as={Star}
-        size="1em"
-        style={favouriteFilled ? { fill: "#ECC94B" } : { fill: "none" }}
-      />
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ rotate: 180}}
+      >
+        <IconButton
+          onClick={(event) => toggleFavourite(event, type, item)}
+          variant="unstyled"
+          stroke="#ECC94B"
+          as={Star}
+          size="1em"
+          style={favouriteFilled ? { fill: "#ECC94B" } : { fill: "none" }}
+        />
+      </motion.div>
     </div>
   );
 }
