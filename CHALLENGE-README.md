@@ -9,7 +9,7 @@ I made three branches for each of the three tasks.
 
 My branch naming convention for this task includes [b/f] in the first postion for bug or feature, followed by the "ticket" number, and short description of the task/ticket.
 
-I also made a `release` branch for production and `staging-01` branch where I first merged my branches to test them before they are merged to production (`release`).
+I also made a `master` branch for production and `staging-01` branch where I first merged my branches to test them before they are merged to production (`master`).
 
 ## Tasks
 
