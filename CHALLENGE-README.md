@@ -46,4 +46,47 @@ For this last section, I decided to add a dark mode version to the application. 
 
 Some next steps I would like to implement would be a dark mode for the Google Maps, as well as some more animations on page loads. I believe subtle uses of animations allow users to really feel a sense in interaction with the application resulting in a better user experience. This may include smoother page transitions and fade in of the item cards on first load. 
 
+## Develop
+
+> You'll need [Node](https://nodejs.org/en/) and
+> [Yarn](https://classic.yarnpkg.com/en/) installed
+
+- run `yarn` to install dependencies
+- run `yarn start` to start development environment
+
+## Build
+
+> You'll need [Node](https://nodejs.org/en/) and
+> [Yarn](https://classic.yarnpkg.com/en/) installed
+
+- run `yarn` to install dependencies
+- run `yarn build` to start development environment
+- output is in `build` directory,
+  [ready to be deployed](https://create-react-app.dev/docs/deployment/)
+
+## Data
+
+All data is fetched from the unofficial SpaceX API V3 at
+[spacexdata.com](https://docs.spacexdata.com/?version=latest).
+
+### Technologies Used
+
+> This project was bootstrapped with
+> [Create React App](https://github.com/facebook/create-react-app). You can
+> learn more in the
+> [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+- [React](https://reactjs.org/) - UI library
+- [Chakra UI](https://chakra-ui.com/) - Design system and component library,
+  with [Emotion](https://emotion.sh), its peer dependency
+- [SWR](https://swr.now.sh/) - Data fetching and caching library
+- [React Router v6](https://github.com/ReactTraining/react-router/blob/f59ee5488bc343cf3c957b7e0cc395ef5eb572d2/docs/installation/getting-started.md) -
+  routing library
+- [React Feathers](https://github.com/feathericons/react-feather) - Icons
+  ([Feather icons](https://feathericons.com/) wrapper for React)
+- [timeago.js](https://timeago.org/) - Tiny library to display human-readable
+  relative time difference
+- [Luxon.js](https://github.com/moment/luxon) - Successor of Moment.js to deal with Date/Time/Zones
+- [Framer Motion](https://www.framer.com/motion/) - Animation and motion library for React apps
+
 
