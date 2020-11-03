@@ -23,12 +23,11 @@ Next, I needed to find a solution for how I can show the user's current timezone
 Inside the utils/format-date.js began by trying to get the user's local timezone string from the offset in 
 the ISO timestamp inside the Intl.DateTimeFormat function.
 
-After some [research](https://stackoverflow.com/questions/20712419/get-utc-offset-from-timezone-in-javascript),I realized it wasn't possible to get the actual timezone 
-string from the offset since multiple timezones may have the same offset.
-I tried hard to complete this task using vanilla Javascript but after searching for a solution I realized there was no solution without using Moment.js or Luxon.
+After some [research](https://stackoverflow.com/questions/20712419/get-utc-offset-from-timezone-in-javascript), I noticed it wasn't possible to get the actual timezone string from the offset since multiple timezones may use the same offset value.
+I tried to complete this first task using only Javascript but after searching for a solution I realized there was no solution without using Moment.js or Luxon.
 I decided to go with Luxon because it's a [smaller package](https://www.npmtrends.com/luxon-vs-moment) but also the successor to Moment.js and likely to stay maintained.
 
-Once the package was imported it became easy to get the UTC offset of the `launch_date_local` string using `DateTime.fromISO(timestamp, { setZone: true })` this returned the string of the timezone of my user.
+Once the package was imported it became easy to get the UTC offset of the `launch_date_local` string using `DateTime.fromISO(timestamp, { setZone: true })` this returned the string of the UTC offset of my launch pad.
 I decided to also show the user's time prefernce by using `navigator.language` to get the prefered language and therefore the prefered date/time display of the user.
 For example, European users see 24h clock and North American users see 12h. This also gets the current timezone of the user.
 
