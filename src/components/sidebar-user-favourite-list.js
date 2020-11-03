@@ -67,7 +67,7 @@ function FavouriteLaunchPadListItems() {
             <LaunchPadItem key={launchPad.site_id} launchPad={launchPad} />
           ))
         ) : (
-          <Text fontSize="1em">No favourite launch pads yet! Add some</Text>
+          <Text fontSize="1em">Add your favourite launch pad!</Text>
         )}
       </SimpleGrid>
     </>
@@ -87,7 +87,7 @@ function FavouriteLaunchesListItems() {
             <LaunchItem key={launch.flight_number} launch={launch} />
           ))
         ) : (
-          <Text fontSize="1em">No favourite launches yet! Add some</Text>
+          <Text fontSize="1em">Add your favourite launches!</Text>
         )}
       </SimpleGrid>
     </>
