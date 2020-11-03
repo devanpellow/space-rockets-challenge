@@ -23,9 +23,13 @@ import {
 } from "@chakra-ui/core";
 
 import { useSpaceX } from "../utils/use-space-x";
-import { formatUTCOffsetDateTime, formatUserLocalDateTime } from "../utils/format-date";
+import {
+  formatUTCOffsetDateTime,
+  formatUserLocalDateTime,
+} from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
+import FavouriteButton from "./button-user-favourite";
 
 export default function Launch() {
   let { launchId } = useParams();
@@ -85,6 +89,7 @@ function Header({ launch }) {
         objectFit="contain"
         objectPosition="bottom"
       />
+
       <Heading
         color="white"
         display="inline"
@@ -94,8 +99,16 @@ function Header({ launch }) {
         py="2"
         borderRadius="lg"
       >
-        {launch.mission_name}
+        <Flex alignContent="center">
+          <Text mr="2">{launch.mission_name}</Text>
+          <FavouriteButton
+            type={"launches"}
+            id={launch.flight_number}
+            item={launch}
+          />
+        </Flex>
       </Heading>
+
       <Stack isInline spacing="3">
         <Badge variantColor="purple" fontSize={["xs", "md"]}>
           #{launch.flight_number}
@@ -125,7 +138,13 @@ function TimeAndLocation({ launch }) {
           </Box>
         </StatLabel>
         <StatNumber fontSize={["md", "xl"]}>
-          <Tooltip hasArrow label={'Your local time: ' + formatUserLocalDateTime(launch.launch_date_utc)}>
+          <Tooltip
+            hasArrow
+            label={
+              "Your local time: " +
+              formatUserLocalDateTime(launch.launch_date_utc)
+            }
+          >
             {formatUTCOffsetDateTime(launch.launch_date_local)}
           </Tooltip>
         </StatNumber>
